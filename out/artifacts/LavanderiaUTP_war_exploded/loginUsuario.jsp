@@ -20,12 +20,15 @@
 <div class="container">
     <div class="card card-container">
         <p id="profile-name" class="profile-name-card"></p>
-        <form method="post" accept-charset="utf-8" action="login.php" name="loginform" autocomplete="off" role="form" class="form-signin">
-
-            <span id="reauth-email" class="reauth-email"></span>
-            <input class="form-control" placeholder="Usuario" name="user_name" type="text" value="" autofocus="" required>
-            <input class="form-control" placeholder="Contraseña" name="user_password" type="password" value="" autocomplete="off" required>
-            <button type="submit" class="btn btn-lg btn-success btn-block btn-signin" name="login" id="submit">Iniciar Sesion</button>
+        <form method="post" accept-charset="utf-8" action="LoginUsu" name="loginform" autocomplete="off" role="form" class="form-signin">
+            <fieldset>
+                <input type="hidden" name="action" value="logearse"/>
+                <input type="hidden" name="user_perfil" value="1"/>
+                <input class="form-control" placeholder="Usuario" name="user_name" type="text" value="" autofocus="" required>
+                <input class="form-control" placeholder="Contraseña" name="user_password" type="password" value="" autocomplete="off" required>
+                <button type="submit" class="btn btn-lg btn-success btn-block btn-signin" name="login" id="submit">Iniciar Sesion</button>
+                <p></p><a href="LoginUsu?action=new">No tienes Cuenta?</a></p>
+            </fieldset>
         </form><!-- /form -->
 
     </div><!-- /card-container -->

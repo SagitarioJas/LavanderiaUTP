@@ -3,6 +3,7 @@ package pe.edu.utp.overux.services;
 import pe.edu.utp.overux.models.domain.Country;
 import pe.edu.utp.overux.models.HrDataStore;
 import pe.edu.utp.overux.models.domain.Region;
+import pe.edu.utp.overux.models.domain.Usuario;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -27,6 +28,7 @@ public class HrService {
         }
     }
 
+    /*LOGIN REGION*/
     public Region findRegionById(int id) {
         return dataStore.findRegionById(id);
     }
@@ -42,4 +44,8 @@ public class HrService {
     public Region createRegion(String name) { return dataStore.createRegion(name);}
 
     public boolean updateRegion(Region region) { return dataStore.updateRegion(region);}
+
+    /*LOGIN USUARIO*/
+    public int finByLogin(String name, String clave,int perfil){ return dataStore.finByLogin(name,clave,perfil);}
+    public Usuario createUsuario(String name, String clave,int perfil){ return dataStore.createUsuario(name,clave,perfil);}
 }

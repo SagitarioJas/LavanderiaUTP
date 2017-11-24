@@ -7,14 +7,25 @@ public class Usuario extends  Base {
     private int id;
     private String name;
     private String clave;
+    private int perfil;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String name, String clave) {
+    public Usuario(int id, String name, String clave, int perfil) {
         this.id = id;
         this.name = name;
         this.clave = clave;
+        this.perfil = perfil;
+    }
+
+    public int getPerfil() {
+        return perfil;
+    }
+
+    public Usuario setPerfil(int perfil) {
+        this.perfil = perfil;
+        return this;
     }
 
     public int getId() {
@@ -47,8 +58,9 @@ public class Usuario extends  Base {
     public static Usuario from(ResultSet rs) {
         try {
             return (new Usuario())
-                    .setId(rs.getInt("region_id"))
-                    .setName(rs.getString("region_name"));
+                    .setId(rs.getInt("user_id"))
+                    .setName(rs.getString("user_name"))
+                    .setPerfil(rs.getInt("user_perfil"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

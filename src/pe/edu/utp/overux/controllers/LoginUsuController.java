@@ -1,6 +1,7 @@
 package pe.edu.utp.overux.controllers;
 
 import pe.edu.utp.overux.models.domain.Region;
+import pe.edu.utp.overux.models.domain.Usuario;
 import pe.edu.utp.overux.services.HrService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,58 +36,49 @@ public class LoginUsuController extends javax.servlet.http.HttpServlet {
         String action = request.getParameter("action");
         if(method.equals("GET")) {
 
-            if(action.equals("index")) {
+            if(action.equals("indexUsu")) {
                 url = "loginUsuario.jsp";
             }
-
-
-            /*if(action.equals("index")) {
-                List<Region> regions = service.findAllRegions();
-                request.setAttribute("regions", regions);
-                url = "listRegions.jsp";
-            }*/
-
-            //action=show
-
-            if(action.equals("show"))
-            {
-                Region region = service.findRegionById(
-                        Integer.parseInt(
-                                request.getParameter("id")));
-                request.setAttribute("region", region);
-                url = "showRegion.jsp";
+            if(action.equals("indexCli")) {
+                url = "loginCliente.jsp";
             }
 
-
-            // action == new
             if(action.equals("new")) {
-                url = "newRegion.jsp";
+                url = "newUsuario.jsp";
             }
-            // action == edit
-            if(action.equals("edit")) {
-                Region region = service.findRegionById(
-                        Integer.parseInt(
-                                request.getParameter("id")));
-                request.setAttribute("region", region);
-                url = "editRegion.jsp";
-            }
+
+
         }
         if(method.equals("POST")) {
+
+            if(action.equals("logearse")) {
+                String name = request.getParameter("user_name");
+                String password = request.getParameter("user_password");
+                int perfil=Integer.parseInt(request.getParameter("user_perfil"));
+                int opc = service.finByLogin(name,password,perfil);
+                if (opc == 0)
+                {
+                    url = "errorLogin.jsp";
+                }
+                else{
+                    if (perfil == 1)
+                    {
+                        url = "lstClientes.jsp";
+                    }
+                    else{
+                        url = "perfilCliente.jsp";
+                    }
+
+                }
+
+            }
             // action == create
             if(action.equals("create")) {
                 String name = request.getParameter("user_name");
                 String password = request.getParameter("user_password");
-                Region region = service.createRegion(name);
-                request.setAttribute("regions", service.findAllRegions());
-                url = "listRegions.jsp";
-            }
-            // action == update
-            if(action.equals("update")) {
-                int id = Integer.parseInt(request.getParameter("id"));
-                String name = request.getParameter("name");
-                boolean isUpdated = service.updateRegion(new Region(id, name));
-                request.setAttribute("regions", service.findAllRegions());
-                url = "listRegions.jsp";
+                int perfil=Integer.parseInt(request.getParameter("user_perfil"));
+                Usuario usuario=service.createUsuario(name,password,perfil);
+                url = "loginUsuario.jsp";
             }
 
         }

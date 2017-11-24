@@ -41,8 +41,8 @@
           <nav id="nav">
               <ul>
                   <li class="active"><a href="index.html">Home</a></li>
-                  <li><a href="LoginUsu?action=index">Usuarios</a> </li>
-                  <li><a href="LoginCli?action=index">Clientes</a></li>
+                  <li><a href="LoginUsu?action=indexUsu">Usuarios</a> </li>
+                  <li><a href="LoginUsu?action=indexCli">Clientes</a></li>
               </ul>
           </nav>
       </div>
