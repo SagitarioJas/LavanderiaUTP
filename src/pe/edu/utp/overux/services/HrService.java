@@ -1,5 +1,6 @@
 package pe.edu.utp.overux.services;
 
+import pe.edu.utp.overux.models.domain.Cliente;
 import pe.edu.utp.overux.models.domain.Country;
 import pe.edu.utp.overux.models.HrDataStore;
 import pe.edu.utp.overux.models.domain.Region;
@@ -48,4 +49,11 @@ public class HrService {
     /*LOGIN USUARIO*/
     public int finByLogin(String name, String clave,int perfil){ return dataStore.finByLogin(name,clave,perfil);}
     public Usuario createUsuario(String name, String clave,int perfil){ return dataStore.createUsuario(name,clave,perfil);}
+
+
+    public List<Cliente> finallCliente(){
+        return dataStore.findAllClientes();
+    }
+    public List<Cliente> finallClientByname(String name){ return dataStore.findAllClientesByname(name);}
+    public Cliente findByName (String name){return  dataStore.findByName(name);}
 }

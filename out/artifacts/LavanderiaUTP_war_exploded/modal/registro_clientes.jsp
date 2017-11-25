@@ -8,7 +8,6 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" method="post" id="guardar_cliente" name="guardar_cliente">
-                    <div id="resultados_ajax"></div>
                     <div class="form-group">
                         <label for="nombre" class="col-sm-3 control-label">Nombre</label>
                         <div class="col-sm-8">

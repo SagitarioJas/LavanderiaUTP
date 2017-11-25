@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Bebidas Premium SAC</a>
+            <a class="navbar-brand" href="#">Lavandary</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

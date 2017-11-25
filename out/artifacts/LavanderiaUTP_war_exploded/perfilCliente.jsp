@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="col-sm-3 control-label">Email</label>
+                        <label for="email" class="col-sm-3 control-label">Distrito</label>
                         <div class="col-sm-8">
                             <input type="email" class="form-control" id="email" name="email" >
 

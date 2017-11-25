@@ -1,5 +1,6 @@
 package pe.edu.utp.overux.controllers;
 
+import pe.edu.utp.overux.models.domain.Cliente;
 import pe.edu.utp.overux.models.domain.Region;
 import pe.edu.utp.overux.models.domain.Usuario;
 import pe.edu.utp.overux.services.HrService;
@@ -7,6 +8,7 @@ import pe.edu.utp.overux.services.HrService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @javax.servlet.annotation.WebServlet(name = "LoginUsuController", urlPatterns = "/LoginUsu")
 public class LoginUsuController extends javax.servlet.http.HttpServlet {
@@ -61,8 +63,10 @@ public class LoginUsuController extends javax.servlet.http.HttpServlet {
                     url = "errorLogin.jsp";
                 }
                 else{
-                    if (perfil == 2)
+                    if (perfil == 1)
                     {
+                        List<Cliente> clientes = service.finallCliente();
+                        request.setAttribute("clientes", clientes);
                         url = "Clientes.jsp";
                     }
                     else{
@@ -79,6 +83,12 @@ public class LoginUsuController extends javax.servlet.http.HttpServlet {
                 int perfil=Integer.parseInt(request.getParameter("user_perfil"));
                 Usuario usuario=service.createUsuario(name,password,perfil);
                 url = "loginUsuario.jsp";
+            }
+
+            if(action.equals("search")){
+                String name = request.getParameter("distrito");
+                request.setAttribute("clientes", service.finallClientByname(name));
+                url = "searchClientes.jsp";
             }
 
         }

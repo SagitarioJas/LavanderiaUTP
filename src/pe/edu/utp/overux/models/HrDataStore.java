@@ -1,8 +1,10 @@
 package pe.edu.utp.overux.models;
 
+import pe.edu.utp.overux.models.Entity.ClienteEntity;
 import pe.edu.utp.overux.models.Entity.CountryEntity;
 import pe.edu.utp.overux.models.Entity.RegionsEntity;
 import pe.edu.utp.overux.models.Entity.UsuarioEntity;
+import pe.edu.utp.overux.models.domain.Cliente;
 import pe.edu.utp.overux.models.domain.Country;
 import pe.edu.utp.overux.models.domain.Region;
 import pe.edu.utp.overux.models.domain.Usuario;
@@ -15,6 +17,8 @@ public class HrDataStore {
     private RegionsEntity regionsEntity;
     private CountryEntity countrieEntity;
     private UsuarioEntity usuarioEntity;
+    private ClienteEntity clienteEntity;
+
 
     public HrDataStore(Connection connection) {
         this.setConnection(connection);
@@ -54,6 +58,14 @@ public class HrDataStore {
             usuarioEntity.setConnection(connection);
         }
         return  usuarioEntity;
+    }
+
+    private ClienteEntity getClienteEntity(){
+        if(clienteEntity == null){
+            clienteEntity = new ClienteEntity();
+            clienteEntity.setConnection(connection);
+        }
+        return  clienteEntity;
     }
 
 
@@ -111,6 +123,23 @@ public class HrDataStore {
                 null:
                 getUsuarioEntity().create(name,clave,perfil);
     }
+
+    /*CLIENTES*/
+
+    public Cliente findClienteById(String id) {
+        return getConnection() == null ?
+                null :
+                getClienteEntity().findByName(id);
+    }
+
+    public List<Cliente> findAllClientes() {
+        return getConnection() == null ? null : getClienteEntity().findAll();
+    }
+    public List<Cliente> findAllClientesByname(String name) {
+        return getConnection() == null ? null : getClienteEntity().findAllbyName(name);
+    }
+    public Cliente findByName(String name){ return getConnection() == null ? null: getClienteEntity().findByName(name);}
+
 
 }
 
