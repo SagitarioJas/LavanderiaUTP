@@ -61,9 +61,9 @@ public class LoginUsuController extends javax.servlet.http.HttpServlet {
                     url = "errorLogin.jsp";
                 }
                 else{
-                    if (perfil == 1)
+                    if (perfil == 2)
                     {
-                        url = "lstClientes.jsp";
+                        url = "Clientes.jsp";
                     }
                     else{
                         url = "perfilCliente.jsp";

@@ -31,21 +31,22 @@
         <div class="panel-body">
             <jsp:include page="modal/registro_clientes.jsp"></jsp:include>
             <jsp:include page="modal/editar_clientes.jsp"></jsp:include>
-            <form class="form-horizontal" role="form" id="datos_cotizacion">
-                <div class="form-group row">
-                    <label for="q" class="col-md-2 control-label">Cliente</label>
-                    <div class="col-md-5">
-                        <input type="text" class="form-control" id="q" placeholder="Nombre del cliente" onkeyup='load(1);'>
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button" class="btn btn-default" onclick='load(1);'>
-                            <span class="glyphicon glyphicon-search" ></span> Buscar</button>
-                        <span id="loader"></span>
-                    </div>
-                </div>
-            </form>
-            <div id="resultados"></div><!-- Carga los datos ajax -->
-            <div class='outer_div'></div><!-- Carga los datos ajax -->
+            <table>
+                <tr>
+                    <th>Id</th>
+                    <th></th>
+                    <th>Actions</th>
+                </tr>
+                <c:forEach var="clientes" items="${clientes}">
+                    <tr>
+                        <td><c:out value="${region.id}"/> </td>
+                        <td><c:out value="${region.name}"/> </td>
+                        <td>
+                            <a href="regions?action=edit&id=${region.id}">Edit</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </div>
 </div>
